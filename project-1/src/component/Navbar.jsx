@@ -9,7 +9,18 @@ function Navbar() {
     const [data,setdata] = useState([])
 
     const handleclick=()=>{
-        fetch('https://mock-server-app-4tp9.onrender.com/product')
+        fetch('https://mock-server-app-ss14.onrender.com/womendata')
+        .then(res=>res.json())
+        .then((res)=>{
+            setdata(res)
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
+    }
+
+    const handleclick2=()=>{
+        fetch('https://mock-server-app-1-9jyi.onrender.com/products')
         .then(res=>res.json())
         .then((res)=>{
             setdata(res)
@@ -28,18 +39,18 @@ function Navbar() {
                 <div className="col-12">
                     <nav className="main-nav">
                         <a href="index.html" className="logo">
-                            <img src="./src/assets/images/logo.png"/>
+                            <img src="https://themewagon.github.io/hexashop/assets/images/logo.png"/>
                         </a>
                         <ul className="nav">
                             <li className="scroll-to-section"><a href="index.html" className="active">Home</a></li>
                             <li className="scroll-to-section"><a href="index.html">Men's</a></li>
-                            <li className="scroll-to-section"><a href="index.html">Women's</a></li>
-                            <li className="scroll-to-section"><a href="index.html">Kid's</a></li>
+                            <li onClick={handleclick}><a>Women's</a></li>
+                            <li onClick={handleclick2}><a>Kid's</a></li>
                             <li className="submenu">
                                 <a >Pages</a>
                                 <ul>
                                     <li><a href="about.html">About Us</a></li>
-                                    <li onClick={handleclick}><a>Products</a></li>
+                                    <li ><a>Products</a></li>
                                     <li><a href="single-product.html">Single Product</a></li>
                                     <li><a href="contact.html">Contact Us</a></li>
                                 </ul>
